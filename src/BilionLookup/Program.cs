@@ -59,8 +59,9 @@ if (Directory.Exists(dirTemp) == false)
     Directory.CreateDirectory(dirTemp);
 }
 var count = 0;
-var maxCount = 10000;
-int batchwrite = 100000 / maxCount;
+
+int batchwrite = 50;
+int maxCount = 100000/50;
 int maxLine = 1000000;
 List<Task> tasksWrite = new List<Task>();
 
@@ -84,7 +85,7 @@ while (true)
     {
         break;
     }
-    Console.WriteLine("Batch: " + count + " batch size: " + batchwrite);
+    Console.WriteLine("Batch: " + count+ " maxCount: "+ maxCount + " batch size: " + batchwrite);
     tasksWrite = new List<Task>();
     for (var i = 0; i < batchwrite; i++)
     {
